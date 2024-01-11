@@ -1,0 +1,23 @@
+List<String> listCategory = [
+  'Winter',
+  'Gradient',
+  'Paper',
+  'Trees',
+  'School',
+  'Cooking',
+  'Smoke',
+  'Walking',
+  'Spring',
+  'Love',
+  'Business-Meeting',
+  'Burj-Khalifa',
+  'Graphic-Design',
+  'Exercise',
+  'London',
+  'January',
+  'Learning',
+  'Hacker',
+  'Team',
+  'Winter',
+];
+
