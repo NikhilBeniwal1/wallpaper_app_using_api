@@ -7,7 +7,31 @@ import '../models/wallpaper_model.dart';
 import 'wallpaper_screen.dart';
 
 class HomeScreen extends StatefulWidget {
+List<Map<String,dynamic>> category = [
+  {
+    "imgUrl" : "https://upload.wikimedia.org/wikipedia/commons/a/a4/2019_Toyota_Corolla_Icon_Tech_VVT-i_Hybrid_1.8.jpg",
+    "catName" : "Love",
+  },{
+    "imgUrl" : "",
+    "catName" : "Car",
+  },{
+    "imgUrl" : "",
+    "catName" : "Bike",
+  },{
+    "imgUrl" : "",
+    "catName" : "Nature",
+  },{
+    "imgUrl" : "",
+    "catName" : "Romance",
+  },{
+    "imgUrl" : "",
+    "catName" : "Science",
+  },{
+    "imgUrl" : "",
+    "catName" : "Sports",
+  },
 
+];
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -57,6 +81,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
+
+
+
+            // text best of months text
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Trending Wallpapers",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+
+              // best of month wallpapers
+               bestofMonth(),
+
+
+
             // coler tone text
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -79,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) {
                       return Container(
                         decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey,width: 1),
                           borderRadius: BorderRadius.circular(4),
                           color: mColorList[index].colorValue!,
                         ),
@@ -95,21 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 5,
             ),
 
+            // categories
+            categories(),
 
-            // text best of months text
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Trending Wallpapers",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-
-              // best of month wallpapers
-               bestofMonth(),
 
 
           ],
@@ -198,7 +231,35 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget categories() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: GridView.builder(
+            itemCount: widget.category.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2 ,crossAxisSpacing: 10,mainAxisSpacing: 10,childAspectRatio: 16/9),
+            itemBuilder: (context, index) {
+              return Container(
 
+                decoration: BoxDecoration(
+
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+                    image: DecorationImage(
+                        image: NetworkImage(widget.category[index]["imgUrl"]),
+                        fit: BoxFit.cover),
+
+
+                ),
+
+                child: Center(child: Text(widget.category[index]["catName"],style: TextStyle(fontSize: 20,color: Colors.white),)),
+
+              );
+            },
+        ),
+      ),
+    );
+
+  }
 
 
 }
